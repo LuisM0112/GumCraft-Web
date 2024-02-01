@@ -1,3 +1,8 @@
-<button [routerLink]="'/login'">Login</button>
-<button [routerLink]="'/register'">Register</button>
-
+<div id="HeaderContainer" class="container">
+  <div id="LogoContainer" class="container">
+    <img id="LogoImg" src="../../assets/images/LogoBg.png" alt="GumCraft-Logo" [routerLink]="'/'">
+    <h1 id="LogoName">GumCraft</h1>
+  </div>
+  <button id="LoginBtn" class="button" [routerLink]="'/login'">Login</button>
+  <button id="RegisterBtn" class="button" [routerLink]="'/register'">Register</button>
+</div>

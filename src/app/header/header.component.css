@@ -1,0 +1,32 @@
+*{
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.container{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.container > *:not(.container) {
+  margin: 1%;
+}
+
+#HeaderContainer{
+  justify-content: space-around;
+  
+}
+
+#LogoImg{
+  width: 5%;
+  height: min-content;
+  border: solid 2px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+button{
+
+  cursor: pointer;
+}
