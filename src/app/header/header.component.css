@@ -15,7 +15,6 @@
 
 #HeaderContainer{
   justify-content: space-around;
-  
 }
 
 #LogoImg{
@@ -27,6 +26,5 @@
 }
 
 button{
-
   cursor: pointer;
 }

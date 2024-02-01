@@ -1,5 +1,11 @@
 # GumCraft-Web
-Web del proyecto GumCraft
+Web del proyecto GumCraft para el módulo de Acceso a datos.
+
+## Autores
+- Ángel Linero Cano
+- Pablo Javier Muñoz García
+- Luis Miguel García Sevilla
+- Gonzalo Ruiz Azuar
 
 # GumCraftWeb
 
