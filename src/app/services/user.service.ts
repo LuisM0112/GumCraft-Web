@@ -20,7 +20,7 @@ export class UserService {
 
     try {
       const response: any = await lastValueFrom(
-        this.httpClient.post<string>(this.API_URL, userData, options)
+        this.httpClient.post<string>(`${this.API_URL}/SignUp`, userData, options)
       );
       console.log(response as string);
     } catch (error) {
@@ -28,7 +28,7 @@ export class UserService {
     }
   }
 
-  public async sendLogedUser(userData: any) {
+  public async sendLoggedUser(userData: any) {
     const options: any = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -36,12 +36,13 @@ export class UserService {
       responseType: 'text',
     };
 
-    const request = this.httpClient.post<string>(
-      this.API_URL,
-      userData,
-      options
-    );
-    const response: any = await lastValueFrom(request);
-    console.log(response as string);
+    try {
+      const response: any = await lastValueFrom(
+        this.httpClient.post<string>(`${this.API_URL}/Login`, userData, options)
+      );
+      console.log(response as string);
+    } catch (error) {
+      console.error('Error: ', error);
+    }
   }
 }

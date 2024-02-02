@@ -6,5 +6,24 @@
 }
 
 button{
+  border-radius: 15px;
+  padding: 10px;
+
+  background-color: rgb(192, 192, 192);
+
+  border: hidden;
   cursor: pointer;
+}
+
+button:hover{
+  background-color: lightgray;
+  animation: shake 0.2s;
+}
+
+@keyframes shake {
+  0%  {rotate:0deg;}
+  25%  {rotate:-5deg;}
+  50%  {rotate:0deg;}
+  75% {rotate:5deg;}
+  100% {rotate:0deg;}
 }

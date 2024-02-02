@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +16,6 @@ export class LoginComponent {
   constructor(public userService: UserService) { }
 
   public sendData() {
-    this.userService.sendLogedUser(this.userData);
+    this.userService.sendLoggedUser(this.userData);
   }
 }
