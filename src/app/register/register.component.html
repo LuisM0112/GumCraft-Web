@@ -1,17 +1,43 @@
 <div id="RegisterContainer" class="container">
   <h1>Registo</h1>
-  <form>
+  <form (ngSubmit)="sendData()">
     <b>Nombre</b>
-    <input type="text" [(ngModel)]="userData.userName" name="userName" placeholder="User name"/>
+    <input
+      type="text"
+      [(ngModel)]="userData.userName"
+      name="userName"
+      placeholder="User name"
+    />
     <b>Correo Electrónico</b>
-    <input type="email" [(ngModel)]="userData.email" name="email" placeholder="Email"/>
+    <input
+      type="email"
+      [(ngModel)]="userData.email"
+      name="email"
+      placeholder="Email"
+    />
     <b>Contraseña</b>
-    <input type="password" [(ngModel)]="userData.password" name="password" placeholder="Password"/>
+    <input
+      type="password"
+      [(ngModel)]="userData.password"
+      name="password"
+      placeholder="Password"
+    />
     <b>Repite Contraseña</b>
-    <input type="password" [(ngModel)]="userData.passwordBis" name="passwordBis" placeholder="Repeat password"/>
+    <input
+      type="password"
+      [(ngModel)]="userData.passwordBis"
+      name="passwordBis"
+      placeholder="Repeat password"
+    />
     <b>Dirección de residencia</b>
-    <input type="text" [(ngModel)]="userData.address" name="address" placeholder="Address"/>
+    <input
+      type="text"
+      [(ngModel)]="userData.address"
+      name="address"
+      placeholder="Address"
+    />
+    <button type="submit">Registrarse</button>
   </form>
-  <button (click)="sendData()">Registrarse</button>
+
   <button [routerLink]="'/'">Volver</button>
 </div>

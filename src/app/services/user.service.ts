@@ -3,36 +3,44 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  API_URL: string = 'http://localhost:5000/api/gumcraft';
 
-  API_URL: string = "";
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) { }
-
-  public async sendNewUser(userData: any){
+  public async sendNewUser(userData: any) {
     const options: any = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }),
-      responseType: 'text'
+      responseType: 'text',
     };
 
-    const request = this.httpClient.post<string>(this.API_URL, userData, options);
-    const response: any = await lastValueFrom(request);
-    console.log(response as string);
+    try {
+      const response: any = await lastValueFrom(
+        this.httpClient.post<string>(this.API_URL, userData, options)
+      );
+      console.log(response as string);
+    } catch (error) {
+      console.error('Error: ', error);
+    }
   }
-  
-  public async sendLogedUser(userData: any){
+
+  public async sendLogedUser(userData: any) {
     const options: any = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }),
-      responseType: 'text'
+      responseType: 'text',
     };
 
-    const request = this.httpClient.post<string>(this.API_URL, userData, options);
+    const request = this.httpClient.post<string>(
+      this.API_URL,
+      userData,
+      options
+    );
     const response: any = await lastValueFrom(request);
     console.log(response as string);
   }
