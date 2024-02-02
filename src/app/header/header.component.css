@@ -1,5 +1,4 @@
 *{
-  box-sizing: border-box;
   user-select: none;
 }
 
@@ -22,9 +21,5 @@
   height: min-content;
   border: solid 2px;
   border-radius: 15px;
-  cursor: pointer;
-}
-
-button{
   cursor: pointer;
 }

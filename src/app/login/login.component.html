@@ -1,7 +1,11 @@
-<button [routerLink]="'/'">Volver</button>
-<form>
-  <b>Correo Electrónico</b>
-  <input type="email" /><br />
-  <b>Contraseña</b>
-  <input type="text" /><br />
-</form>
+<div id="LoginContainer" class="container">
+  <h1>Inicio de sesión</h1>
+  <form>
+    <b>Correo Electrónico</b>
+    <input type="email" [(ngModel)]="userData.email" name="email" placeholder="Email"/>
+    <b>Contraseña</b>
+    <input type="password" [(ngModel)]="userData.password" name="password" placeholder="Password"/>
+  </form>
+  <button (click)="sendData()">Iniciar sesión</button>
+  <button [routerLink]="'/'">Volver</button>
+</div>

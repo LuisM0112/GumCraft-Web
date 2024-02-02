@@ -1,0 +1,27 @@
+*{
+  align-items: center;
+}
+
+.container{
+  text-align: center;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+}
+
+form > *{
+  margin-bottom: 1%;
+}
+
+input{
+  width: 300px;
+  padding: 5px;
+  
+  border-radius: 8px;
+}
+
+input:hover{
+  background-color: aliceblue;
+}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  userData = {
+    email: '',
+    password: '',
+  };
+  
+  constructor(public userService: UserService) { }
+
+  public sendData() {
+    this.userService.sendLogedUser(this.userData);
+  }
 }

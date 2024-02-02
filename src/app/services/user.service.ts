@@ -1,10 +1,39 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  API_URL: string = "";
+
+  constructor(private httpClient: HttpClient) { }
+
+  public async sendNewUser(userData: any){
+    const options: any = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      responseType: 'text'
+    };
+
+    const request = this.httpClient.post<string>(this.API_URL, userData, options);
+    const response: any = await lastValueFrom(request);
+    console.log(response as string);
+  }
+  
+  public async sendLogedUser(userData: any){
+    const options: any = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      responseType: 'text'
+    };
+
+    const request = this.httpClient.post<string>(this.API_URL, userData, options);
+    const response: any = await lastValueFrom(request);
+    console.log(response as string);
+  }
 }
