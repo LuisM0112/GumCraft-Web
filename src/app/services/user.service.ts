@@ -13,14 +13,14 @@ export class UserService {
   public async sendNewUser(userData: any) {
 
     const formData = new FormData();
-    formData.append('userName', userData.userName);
-    formData.append('email', userData.email);
-    formData.append('address', userData.address);
-    formData.append('password', userData.password);
+    formData.append('UserName', userData.userName);
+    formData.append('Email', userData.email);
+    formData.append('Password', userData.password);
+    formData.append('Address', userData.address);
 
     const options: any = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
+        'Accept': 'text/html, application/xhtml+xml, */*'
       }),
       responseType: 'text',
     };
