@@ -6,11 +6,18 @@ import { lastValueFrom } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  API_URL: string = 'http://localhost:5000/api/gumcraft';
+  API_URL: string = 'http://localhost:5215/api/Gumcraft';
 
   constructor(private httpClient: HttpClient) {}
 
   public async sendNewUser(userData: any) {
+
+    const formData = new FormData();
+    formData.append('userName', userData.userName);
+    formData.append('email', userData.email);
+    formData.append('address', userData.address);
+    formData.append('password', userData.password);
+
     const options: any = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -19,9 +26,8 @@ export class UserService {
     };
 
     try {
-      const response: any = await lastValueFrom(
-        this.httpClient.post<string>(`${this.API_URL}/SignUp`, userData, options)
-      );
+      const request = this.httpClient.post<string>(`${this.API_URL}/SignUp`, formData, options)
+      const response: any = await lastValueFrom(request);
       console.log(response as string);
     } catch (error) {
       console.error('Error: ', error);
