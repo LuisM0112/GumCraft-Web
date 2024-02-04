@@ -1,6 +1,8 @@
 <div id="LoginContainer" class="container">
   <h1>Inicio de sesión</h1>
   <form>
+    <p id="ErrorMessage" *ngIf="errorMessage">{{errorMessage}}</p>
+    <p id="Message" *ngIf="message">{{message}}</p>
     <b>Correo Electrónico</b>
     <input type="email" [(ngModel)]="userData.email" name="email" placeholder="Email"/>
     <b>Contraseña</b>
