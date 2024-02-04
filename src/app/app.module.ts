@@ -10,6 +10,7 @@ import { MainComponent } from './components/main/main.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -17,15 +18,11 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    MainComponent
+    MainComponent,
+    UserComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

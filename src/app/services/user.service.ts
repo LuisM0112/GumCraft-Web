@@ -13,7 +13,6 @@ export class UserService {
   constructor(private httpClient: HttpClient) {}
 
   public async sendNewUser(userData: any): Promise<string> {
-
     const formData = new FormData();
     formData.append('UserName', userData.userName);
     formData.append('Email', userData.email);
@@ -23,13 +22,17 @@ export class UserService {
 
     const options: any = {
       headers: new HttpHeaders({
-        'Accept': 'text/html, application/xhtml+xml, */*'
+        Accept: 'text/html, application/xhtml+xml, */*',
       }),
       responseType: 'text',
     };
 
     try {
-      const request = this.httpClient.post<string>(`${this.API_URL}/SignUp`, formData, options)
+      const request = this.httpClient.post<string>(
+        `${this.API_URL}/SignUp`,
+        formData,
+        options
+      );
       const response: any = await lastValueFrom(request);
       return response;
     } catch (error) {
@@ -38,23 +41,29 @@ export class UserService {
   }
 
   public async sendLoggedUser(userData: any): Promise<string> {
-
     const formData = new FormData();
     formData.append('Email', userData.email);
     formData.append('Password', userData.password);
 
     const options: any = {
       headers: new HttpHeaders({
-        'Accept': 'text/html, application/xhtml+xml, */*'
+        Accept: 'text/html, application/xhtml+xml, */*',
       }),
       responseType: 'text',
     };
 
     try {
-      const request = this.httpClient.post<string>(`${this.API_URL}/Login`, formData, options)
+      const request = this.httpClient.post<string>(
+        `${this.API_URL}/Login`,
+        formData,
+        options
+      );
       const response: any = await lastValueFrom(request);
 
-      this.isUserLogged = (response == 'Sesión Iniciada')
+      this.isUserLogged = response == 'Sesión Iniciada';
+      if (this.isUserLogged) {
+        localStorage.setItem('user', JSON.stringify(userData));
+      }
       return response;
     } catch (error) {
       throw error;
