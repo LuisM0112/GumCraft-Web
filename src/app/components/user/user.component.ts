@@ -15,7 +15,7 @@ interface User {
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  currentUser: User = { userName: '', email: '', password: '', address: ''};
+  currentUser: User = { userName: '', email: '', password: '', address: '' };
 
   constructor(
     private userService: UserService,
@@ -35,9 +35,9 @@ export class UserComponent implements OnInit {
           `http://localhost:5215/api/Gumcraft/GetUserByEmail?email=${this.currentUser.email}`
         )
         .subscribe((userFromServer) => {
-          this.currentUser = userFromServer; // Actualiza this.currentUser con los datos del servidor
-          console.log(`Nombre de usuario: ${this.currentUser.userName}`); // Esto imprimirá el nombre del usuario
-          console.log(`Correo electrónico: ${this.currentUser.email}`); // Esto imprimirá el correo electrónico del usuario
+          this.currentUser = userFromServer;
+          console.log(`Nombre de usuario: ${this.currentUser.userName}`);
+          console.log(`Correo electrónico: ${this.currentUser.email}`);
         });
     }
   }
