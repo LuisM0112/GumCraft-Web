@@ -22,23 +22,5 @@ export class UserComponent implements OnInit {
     private httpClient: HttpClient
   ) {}
 
-  ngOnInit(): void {
-    this.getCurrentUser();
-  }
-
-  getCurrentUser(): void {
-    const user = localStorage.getItem('user');
-    if (user) {
-      this.currentUser = JSON.parse(user);
-      this.httpClient
-        .get<User>(
-          `http://localhost:5215/api/Gumcraft/GetUserByEmail?email=${this.currentUser.email}`
-        )
-        .subscribe((userFromServer) => {
-          this.currentUser = userFromServer;
-          console.log(`Nombre de usuario: ${this.currentUser.userName}`);
-          console.log(`Correo electrónico: ${this.currentUser.email}`);
-        });
-    }
-  }
+  ngOnInit(): void {}
 }

@@ -23,8 +23,8 @@ export class LoginComponent {
     try {
       const response = await this.userService.sendLoggedUser(this.userData);
       console.log(response);
-      this.displayMessage(response);
-      if (response == 'Sesión Iniciada') {
+      this.displayMessage('Sesión iniciada');
+      if (response == true) {
         this.router.navigate(['user']);
       }
     } catch (error) {

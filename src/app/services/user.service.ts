@@ -7,8 +7,11 @@ import { lastValueFrom } from 'rxjs';
 })
 export class UserService {
   API_URL: string = 'http://localhost:5215/api/Gumcraft';
+  API_URLAuth: string = 'http://localhost:5215/api/Auth';
 
   isUserLogged: boolean = false;
+
+  userJWT: string = '';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -40,7 +43,7 @@ export class UserService {
     }
   }
 
-  public async sendLoggedUser(userData: any): Promise<string> {
+  public async sendLoggedUser(userData: any): Promise<boolean> {
     const formData = new FormData();
     formData.append('Email', userData.email);
     formData.append('Password', userData.password);
@@ -54,18 +57,17 @@ export class UserService {
 
     try {
       const request = this.httpClient.post<string>(
-        `${this.API_URL}/Login`,
+        `${this.API_URLAuth}/Login`,
         formData,
         options
       );
       const response: any = await lastValueFrom(request);
 
-      this.isUserLogged = response == 'Sesión Iniciada';
-      if (this.isUserLogged) {
-        localStorage.setItem('user', JSON.stringify(userData));
-      }
-      return response;
+      this.isUserLogged = true;
+      this.userJWT = response;
+      return this.isUserLogged;
     } catch (error) {
+      this.isUserLogged = false;
       throw error;
     }
   }
