@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CatalogComponent } from './components/catalog/catalog.component';
     MainComponent,
     UserComponent,
     CatalogComponent,
+    CartComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],

@@ -1,8 +1,16 @@
 <div id="HeaderContainer" class="container">
   <div id="LogoContainer" class="container">
-    <img id="LogoImg" src="../../assets/images/Logo.png" alt="GumCraft-Logo" [routerLink]="'/'">
+    <img
+      id="LogoImg"
+      src="../../assets/images/Logo.png"
+      alt="GumCraft-Logo"
+      [routerLink]="'/'"
+    />
     <h1 id="LogoName">GumCraft</h1>
   </div>
+  <button id="CartBtn" class="button" [routerLink]="'/cart'">Cart</button>
   <button id="LoginBtn" class="button" [routerLink]="'/login'">Login</button>
-  <button id="RegisterBtn" class="button" [routerLink]="'/register'">Register</button>
+  <button id="RegisterBtn" class="button" [routerLink]="'/register'">
+    Register
+  </button>
 </div>

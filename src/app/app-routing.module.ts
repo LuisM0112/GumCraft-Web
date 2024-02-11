@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { MainComponent } from './components/main/main.component';
 import { UserComponent } from './components/user/user.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'catalog',
     component: CatalogComponent,
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
   },
 ];
 
