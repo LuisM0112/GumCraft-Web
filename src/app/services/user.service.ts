@@ -12,6 +12,7 @@ export class UserService {
   isUserLogged: boolean = false;
 
   userJWT: string = '';
+  static userID = 0;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -64,11 +65,15 @@ export class UserService {
       const response: any = await lastValueFrom(request);
 
       this.isUserLogged = true;
-      this.userJWT = response;
+      UserService.userID = response;
       return this.isUserLogged;
     } catch (error) {
       this.isUserLogged = false;
       throw error;
     }
+  }
+
+  public static getUserId(): number {
+    return this.userID;
   }
 }

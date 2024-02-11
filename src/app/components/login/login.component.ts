@@ -25,7 +25,9 @@ export class LoginComponent {
       console.log(response);
       this.displayMessage('Sesión iniciada');
       if (response == true) {
-        this.router.navigate(['user']);
+        setTimeout(() => {
+          this.router.navigate(['user']);
+        }, 1500);
       }
     } catch (error) {
       const errorHttp = error as HttpErrorResponse;

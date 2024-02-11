@@ -27,8 +27,10 @@ export class RegisterComponent {
       const response = await this.userService.sendNewUser(this.userData);
       console.log(response);
       this.displayMessage(response);
-      if (response == 'Usuario Registrado') {
-        this.router.navigate(['login']);
+      if (response == 'Usuario registrado') {
+        setTimeout(() => {
+          this.router.navigate(['login']);
+        }, 1500);
       }
     } catch (error) {
       const errorHttp = error as HttpErrorResponse;
