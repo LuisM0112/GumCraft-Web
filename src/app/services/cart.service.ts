@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { lastValueFrom, map } from 'rxjs';
@@ -30,5 +30,45 @@ export class CartService {
       amount: item.amount,
       price: item.price,
     };
+  }
+
+  /**
+   * addProductToCart
+   */
+  public async addProductToCart(productId: number): Promise<string>{
+    const userID = UserService.getUserId();
+    const options: any = {
+      headers: new HttpHeaders({
+        Accept: 'text/html, application/xhtml+xml, */*',
+      }),
+      responseType: 'text',
+    };
+    try {
+      const request = this.httpClient.put(`${this.API_URL}/cart/${userID}/product/${productId}`,' ', options);
+      const response: any = await lastValueFrom(request);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /**
+   * removeProductFromCart
+   */
+  public async removeProductFromCart(productId: number): Promise<string>{
+    const userID = UserService.getUserId();
+    const options: any = {
+      headers: new HttpHeaders({
+        Accept: 'text/html, application/xhtml+xml, */*',
+      }),
+      responseType: 'text',
+    };
+    try {
+      const request = this.httpClient.put(`${this.API_URL}/cart/${userID}/productDel/${productId}`,' ', options);
+      const response: any = await lastValueFrom(request);
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 }

@@ -8,10 +8,19 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+
   cartList: ProductCart[] = [];
   constructor(private cartService: CartService) {}
 
   async ngOnInit(): Promise<void> {
     this.cartList = await this.cartService.getCartByUserId();
+  }
+
+  removeProductFromCart(productId: number) {
+    try {
+      this.cartService.removeProductFromCart(productId);
+    } catch (error) {
+      console.error('Error: ', error);
+    }
   }
 }

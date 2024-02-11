@@ -3,4 +3,5 @@
   <p>id: {{ cart.productId }}</p>
   <p>cantidad: {{ cart.amount }} ud</p>
   <p>precio: {{ cart.price }}€</p>
+  <button class="removeProduct" (click)="removeProductFromCart(cart.productId)">-</button>
 </div>

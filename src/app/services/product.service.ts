@@ -36,4 +36,17 @@ export class ProductService {
       ethPrice: item.etHprice
     };
   }
+
+  /**
+   * Request products from the API
+   * @return Promise<Product>
+   */
+  public async requestProductById(productId: number): Promise<Product> {
+
+    const request = this.httpClient.get(`${this.API_URL}/Product/${productId}`).pipe(
+      map(this.mapToProduct)
+    );
+
+    return await lastValueFrom(request);
+  }
 }
