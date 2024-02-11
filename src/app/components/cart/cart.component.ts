@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductCart } from 'src/app/model/productCart';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -7,11 +8,10 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cart: any;
-
+  cartList: ProductCart[] = [];
   constructor(private cartService: CartService) {}
 
   async ngOnInit(): Promise<void> {
-    this.cart = await this.cartService.getCartByUserId(1);
+    this.cartList = await this.cartService.getCartByUserId();
   }
 }
