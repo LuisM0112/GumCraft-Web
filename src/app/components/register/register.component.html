@@ -1,6 +1,6 @@
 <div id="RegisterContainer" class="container">
   <h1>Registro</h1>
-  <form (ngSubmit)="sendData()">
+  <form>
     <p id="ErrorMessage" *ngIf="errorMessage">{{errorMessage}}</p>
     <p id="Message" *ngIf="message">{{message}}</p>
     <b>Nombre</b>
@@ -38,7 +38,7 @@
       name="address"
       placeholder="Address"
     />
-    <button type="submit">Registrarse</button>
   </form>
+  <button (click)="sendData()">Registrarse</button>
   <button [routerLink]="'/'">Volver</button>
 </div>
