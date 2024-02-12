@@ -1,4 +1,6 @@
 <h1>Catálogo de productos</h1>
+<p id="ErrorMessage" *ngIf="errorMessage">{{errorMessage}}</p>
+<p id="Message" *ngIf="message">{{message}}</p>
 <div id="CatalogContainer" class="container">
   <details *ngFor="let product of productList" name="producto">
     <summary>
@@ -8,10 +10,7 @@
         <span class="eurPrice">{{product.eurPrice}}</span>
       </p>
     </summary>
-    <button [routerLink]="'/product/' + product.productId"></button>
-    <h4>Detalles</h4>
-    <p>{{product.description}}</p>
-    <p>Stock: {{product.stock}}</p>
-    <p class="ethPrice">Precio ETH: {{product.ethPrice}}</p>
+    <button [routerLink]="'/product/' + product.productId">Ver detalles</button>
+    <button class="AddToCart" (click)="addToCart(product.productId)">Añadir al carrito</button>
   </details>
 </div>

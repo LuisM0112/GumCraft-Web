@@ -1,7 +1,19 @@
-<div *ngFor="let cart of cartList">
-  <h3>{{ cart.name }}</h3>
-  <p>id: {{ cart.productId }}</p>
-  <p>cantidad: {{ cart.amount }} ud</p>
-  <p>precio: {{ cart.price }}€</p>
-  <button class="removeProduct" (click)="removeProductFromCart(cart.productId)">-</button>
-</div>
+<p id="ErrorMessage" *ngIf="errorMessage">{{errorMessage}}</p>
+<p id="Message" *ngIf="message">{{message}}</p>
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Id</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+  </tr>
+  <tr *ngFor="let cart of cartList">
+    <td>{{ cart.name }}</td>
+    <td>{{ cart.productId }}</td>
+    <td>{{ cart.amount }} ud</td>
+    <td>{{ cart.price }}€</td>
+    <button class="removeProduct" (click)="removeProductFromCart(cart.productId)">-</button>
+    <button class="AddToCart" (click)="addToCart(cart.productId)">+</button>
+  </tr>
+</table>
+<button [routerLink]="'/'">Volver</button>

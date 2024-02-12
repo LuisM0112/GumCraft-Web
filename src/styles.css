@@ -6,7 +6,7 @@
 }
 
 button{
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 10px;
 
   background-color: rgb(192, 192, 192);
@@ -26,4 +26,37 @@ button:hover{
   50%  {rotate:0deg;}
   75% {rotate:5deg;}
   100% {rotate:0deg;}
+}
+
+#ErrorMessage{
+  padding: 10px;
+  width: max-content;
+
+  background-color: rgb(255, 96, 96);
+  border-radius: 15px;
+  color: white;
+}
+
+#Message{
+  padding: 10px;
+  width: max-content;
+
+  background-color: rgb(77, 196, 77);
+  border-radius: 15px;
+  color: white;
+}
+
+.AddToCart{
+  border-radius: 10px;
+  padding: 10px;
+
+  border: outset 2px rgb(255, 255, 178);
+  background-color: rgb(255, 208, 79);
+
+  cursor: pointer;
+}
+
+.AddToCart:hover{
+  background-color: rgb(255, 221, 129);
+  animation: shake 0.2s;
 }

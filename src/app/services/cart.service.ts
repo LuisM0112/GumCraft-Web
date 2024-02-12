@@ -13,14 +13,18 @@ export class CartService {
   constructor(private httpClient: HttpClient) {}
 
   public async getCartByUserId(): Promise<ProductCart[]> {
-    const userID = UserService.getUserId();
-    console.log(userID);
+    try {
+      const userID = UserService.getUserId();
+      console.log(userID);
 
-    const request = this.httpClient
-      .get(`${this.API_URL}/cart/${userID}/products`)
-      .pipe(map((response: any) => response.map(this.mapToItem)));
+      const request = this.httpClient
+        .get(`${this.API_URL}/cart/${userID}/products`)
+        .pipe(map((response: any) => response.map(this.mapToItem)));
 
-    return await lastValueFrom(request);
+      return await lastValueFrom(request);
+    } catch (error) {
+      throw error
+    }
   }
 
   private mapToItem(item: any): ProductCart {

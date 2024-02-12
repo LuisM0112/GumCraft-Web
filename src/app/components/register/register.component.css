@@ -25,21 +25,3 @@ input{
 input:hover{
   background-color: aliceblue;
 }
-
-#ErrorMessage{
-  padding: 10px;
-  width: max-content;
-
-  background-color: rgb(255, 96, 96);
-  border-radius: 15px;
-  color: white;
-}
-
-#Message{
-  padding: 10px;
-  width: max-content;
-
-  background-color: rgb(77, 196, 77);
-  border-radius: 15px;
-  color: white;
-}

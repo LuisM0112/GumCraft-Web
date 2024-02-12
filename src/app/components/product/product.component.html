@@ -1,7 +1,10 @@
-<h1>{{product.name}}</h1>
-<p>{{product.productId}}</p>
-<p>{{product.eurPrice}}</p>
-<p>{{product.description}}</p>
-<p>{{product.stock}}</p>
-<p>{{product.ethPrice}}</p>
-<button id="AddToCart" (click)="addToCart(product.productId)">+</button>
+<div id="ProductContainer">
+  <h1>{{product.name}}</h1>
+  <p>Id: {{product.productId}}</p>
+  <p>Descripción: {{product.description}}</p>
+  <p>Stock: {{product.stock}}</p>
+  <p>Precio: {{product.eurPrice}}</p>
+  <p>Precio: {{product.ethPrice}}</p>
+  <button class="AddToCart" (click)="addToCart(product.productId)">Añadir al carrito</button>
+  <button [routerLink]="'/'">Volver</button>
+</div>

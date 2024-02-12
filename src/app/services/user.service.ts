@@ -12,7 +12,7 @@ export class UserService {
   isUserLogged: boolean = false;
 
   userJWT: string = '';
-  static userID = 0;
+  static userID: number = 0;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -74,6 +74,9 @@ export class UserService {
   }
 
   public static getUserId(): number {
+    if (this.userID == 0) {
+      throw 'La sesión no está iniciada'
+    }
     return this.userID;
   }
 }
