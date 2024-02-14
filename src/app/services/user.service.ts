@@ -6,8 +6,8 @@ import { lastValueFrom } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  API_URL: string = 'http://localhost:5215/api/Gumcraft';
-  API_URLAuth: string = 'http://localhost:5215/api/Auth';
+  API_URL: string = 'https://localhost:7065/api/Gumcraft';
+  API_URLAuth: string = 'https://localhost:7065/api/Auth';
 
   isUserLogged: boolean = false;
 

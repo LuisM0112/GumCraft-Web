@@ -8,7 +8,7 @@ import { ProductCart } from '../model/productCart';
   providedIn: 'root',
 })
 export class CartService {
-  private API_URL = 'http://localhost:5215/api/Gumcraft'; // Asegúrate de reemplazar esto con la URL de tu API
+  private API_URL = 'https://localhost:7065/api/Gumcraft';
 
   constructor(private httpClient: HttpClient) {}
 

@@ -8,7 +8,7 @@ import { lastValueFrom, map } from 'rxjs';
 })
 export class ProductService {
 
-  API_URL: string = 'http://localhost:5215/api/Gumcraft';
+  API_URL: string = 'https://localhost:7065/api/Gumcraft';
 
   constructor(private httpClient: HttpClient) {}
   
