@@ -11,9 +11,6 @@ export class UserService {
 
   isUserLogged: boolean = false;
 
-  userJWT: string = '';
-  static userID: number = 0;
-
   constructor(private httpClient: HttpClient) {}
 
   public async sendNewUser(userData: any): Promise<string> {
@@ -65,18 +62,11 @@ export class UserService {
       const response: any = await lastValueFrom(request);
 
       this.isUserLogged = true;
-      UserService.userID = response;
+      localStorage.setItem('Token', response);
       return this.isUserLogged;
     } catch (error) {
       this.isUserLogged = false;
       throw error;
     }
-  }
-
-  public static getUserId(): number {
-    if (this.userID == 0) {
-      throw 'La sesión no está iniciada'
-    }
-    return this.userID;
   }
 }

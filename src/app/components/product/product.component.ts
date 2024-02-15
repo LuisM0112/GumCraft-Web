@@ -7,10 +7,9 @@ import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css'],
 })
-export class ProductComponent implements OnInit{
-
+export class ProductComponent implements OnInit {
   product: Product = new Product();
   id: number = 0;
 
@@ -21,8 +20,10 @@ export class ProductComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.id = this.activatedRoute.snapshot.paramMap.get('productId') as unknown as number;
-    this.getProduct()
+    this.id = this.activatedRoute.snapshot.paramMap.get(
+      'productId'
+    ) as unknown as number;
+    this.getProduct();
   }
 
   /**
@@ -33,10 +34,8 @@ export class ProductComponent implements OnInit{
   }
 
   public async addToCart(productId: number) {
-    console.log("hola");
-    
     try {
-      this.cartService.addProductToCart(productId);
+      await this.cartService.addProductToCart(productId);
     } catch (error) {
       console.error('Error: ', error);
     }
