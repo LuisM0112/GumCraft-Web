@@ -3,12 +3,15 @@ import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { lastValueFrom, map } from 'rxjs';
 import { ProductCart } from '../model/productCart';
+import { Product } from '../model/product';
+import { Transaction } from '../model/transaction';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
   private API_URL = 'https://localhost:7065/api/Gumcraft';
+  dialog: any;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -82,5 +85,76 @@ export class CartService {
     } catch (error) {
       throw error;
     }
+  }
+
+  /**
+   * Transacciones
+   */
+  async buyProduct (product: Product) {
+    const account = await this.getAccount();
+    let transaction = await this.post(`buy/${product.productId}`, JSON.stringify(account)) as Transaction;
+
+    console.log(transaction);
+    
+    const txHash = await this.makeTransaction(transaction);
+    const transactionSuccess = await this.post(`check/${transaction.id}`, JSON.stringify(txHash));
+
+    console.log('Transacción realizada: ' + transactionSuccess);
+
+    const transactionMessage = transactionSuccess
+      ? 'Transacción realizada con éxito :D'
+      :'Transacción fallida :(';
+
+    this.dialog!.querySelector('p')!.innerText = transactionMessage;
+    this.dialog!.showModal();
+  }
+
+  private async getAccount() : Promise<string> {
+    if (typeof window.ethereum == 'undefined') {
+      throw new Error('MetaMask no está instalado');
+    }
+
+    const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
+    const account = accounts[0];
+
+    await window.ethereum.request({
+      method: 'wallet_requestPermissions',
+      params: [
+        {
+          "eth_accounts": { account }
+        }
+      ]
+    });
+
+    return account;
+  }
+
+  private async makeTransaction(transaction: Transaction) : Promise<string> {
+    const txHash = await window.ethereum.request({
+      method: 'eth_sendTransaction',
+      params: [
+        {
+          from: transaction.from,
+          to: transaction.to,
+          value: transaction.value,
+          gas: transaction.gas,
+          gasPrice: transaction.gasPrice
+        }
+      ]
+    });
+
+    return txHash;
+  }
+
+  private async post(url: string, data: any) : Promise<any> {
+    const headers = {'Content-Type': `application/json`};
+    let request$ =  this.httpClient.post(`${this.API_URL}${url}`, data, {headers});
+
+    return await lastValueFrom(request$);
+  }
+}
+declare global {
+  interface Window {
+    ethereum: any;
   }
 }

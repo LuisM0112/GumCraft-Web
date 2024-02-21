@@ -14,6 +14,8 @@
     <td>{{ cart.price }}€</td>
     <button class="removeProduct" (click)="removeProductFromCart(cart.productId)">-</button>
     <button class="AddToCart" (click)="addToCart(cart.productId)">+</button>
+    
   </tr>
 </table>
+<button [routerLink]="'/confirmPurchase'">Confirmar compra</button><br>
 <button [routerLink]="'/'">Volver</button>
