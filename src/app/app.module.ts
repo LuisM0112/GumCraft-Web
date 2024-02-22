@@ -16,6 +16,7 @@ import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ConfirmPurchaseComponent } from './components/confirm-purchase/confirm-purchase.component';
 import { GlobalErrorHandlerService } from './services/global-error-handler.service';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { GlobalErrorHandlerService } from './services/global-error-handler.servi
     ProductComponent,
     CartComponent,
     ConfirmPurchaseComponent,
+    NotificationComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [
