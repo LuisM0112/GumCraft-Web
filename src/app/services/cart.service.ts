@@ -1,9 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserService } from './user.service';
 import { lastValueFrom, map } from 'rxjs';
 import { ProductCart } from '../model/productCart';
-import { Product } from '../model/product';
 import { Transaction } from '../model/transaction';
 
 @Injectable({
@@ -11,7 +9,7 @@ import { Transaction } from '../model/transaction';
 })
 export class CartService {
   private API_URL = 'https://localhost:7065/api/Gumcraft';
-  dialog: any;
+  private TRANSACTION_URL = 'https://localhost:7065/api/Transaction';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -90,23 +88,20 @@ export class CartService {
   /**
    * Transacciones
    */
-  async buyProduct (product: Product) {
+  async buy() {
     const account = await this.getAccount();
-    let transaction = await this.post(`buy/${product.productId}`, JSON.stringify(account)) as Transaction;
+    let transaction = await this.post(`${this.TRANSACTION_URL}/Buy`, JSON.stringify(account)) as Transaction;
 
     console.log(transaction);
     
     const txHash = await this.makeTransaction(transaction);
-    const transactionSuccess = await this.post(`check/${transaction.id}`, JSON.stringify(txHash));
+    const transactionSuccess = await this.post(`/check/${transaction.id}`, JSON.stringify(txHash));
 
     console.log('Transacción realizada: ' + transactionSuccess);
 
     const transactionMessage = transactionSuccess
       ? 'Transacción realizada con éxito :D'
       :'Transacción fallida :(';
-
-    this.dialog!.querySelector('p')!.innerText = transactionMessage;
-    this.dialog!.showModal();
   }
 
   private async getAccount() : Promise<string> {
@@ -148,7 +143,7 @@ export class CartService {
 
   private async post(url: string, data: any) : Promise<any> {
     const headers = {'Content-Type': `application/json`};
-    let request$ =  this.httpClient.post(`${this.API_URL}${url}`, data, {headers});
+    let request$ =  this.httpClient.post(`${this.TRANSACTION_URL}${url}`, data, {headers});
 
     return await lastValueFrom(request$);
   }
