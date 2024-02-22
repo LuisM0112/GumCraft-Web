@@ -30,3 +30,26 @@
   filter: saturate(1.5);
   animation: shake 0.2s;
 }
+
+.enderChest{
+  width: 60%;
+  height: 30%;
+}
+.loginImg{
+  width: 70%;
+  height: 30%;
+}
+.buttonEnder{
+  width: 10%;
+  background-color: white;
+}
+
+
+.buttonLogin{
+  width: 10%;
+  background-color: white;
+}
+.buttonRegister{
+  width: 10%;
+  background-color: white;
+}

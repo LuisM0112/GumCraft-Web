@@ -1,0 +1,35 @@
+.main-container .table-container table {
+  margin: 0 auto;
+  background-size: cover;
+}
+.main-container{
+  text-align: center;
+}
+
+table td {
+  text-align: left;
+  padding-left: 0.5%;
+}
+
+table{
+  border: solid 2px black;
+  border-radius: 12px;
+}
+
+button{
+  height: 15%;
+  width: 10%;
+  background-color: white;
+}
+
+img{
+  width: 40%;
+  height: 10%;
+}
+
+p{
+  font-size: 200%;
+}
+
+
+

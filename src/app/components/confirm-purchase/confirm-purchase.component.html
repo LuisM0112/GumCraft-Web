@@ -1,17 +1,21 @@
-<p>CONFIRMACIÓN DE LA COMPRA</p>
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Id</th>
-    <th>Cantidad</th>
-    <th>Precio</th>
-  </tr>
-  <tr *ngFor="let cart of cartList">
-    <td>{{ cart.name }}</td>
-    <td>{{ cart.productId }}</td>
-    <td>{{ cart.amount }} ud</td>
-    <td>{{ cart.price }}€</td>
-  </tr>
-</table>
-
-<button (click)="buyProduct(product)" >Comprar</button>
+<div class="main-container"><p>CONFIRMACIÓN DE LA COMPRA</p>
+  <div class="table-container">
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Id</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+      </tr>
+      <tr *ngFor="let cart of cartList">
+        <td>{{ cart.name }}</td>
+        <td>{{ cart.productId }}</td>
+        <td>{{ cart.amount }} ud</td>
+        <td>{{ cart.price }}€</td>
+      </tr>
+    </table>
+    <p>TOTAL: </p>
+  </div>
+  <br>
+<button class="buy" (click)="buyProduct(product)"><img src="assets/images/dinero.png" alt=""><br>Comprar</button>
+</div>
