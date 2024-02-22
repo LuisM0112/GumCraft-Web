@@ -90,7 +90,7 @@ export class CartService {
    */
   async buy() {
     const account = await this.getAccount();
-    let transaction = await this.post(`${this.TRANSACTION_URL}/Buy`, JSON.stringify(account)) as Transaction;
+    let transaction = await this.post(`/Buy`, JSON.stringify(account)) as Transaction;
 
     console.log(transaction);
     
@@ -125,6 +125,9 @@ export class CartService {
   }
 
   private async makeTransaction(transaction: Transaction) : Promise<string> {
+    console.log(typeof transaction)
+    console.log(transaction.from)
+    console.log(transaction['from'])
     const txHash = await window.ethereum.request({
       method: 'eth_sendTransaction',
       params: [
@@ -142,8 +145,14 @@ export class CartService {
   }
 
   private async post(url: string, data: any) : Promise<any> {
-    const headers = {'Content-Type': `application/json`};
-    let request$ =  this.httpClient.post(`${this.TRANSACTION_URL}${url}`, data, {headers});
+    const token = localStorage.getItem('Token');
+    const options: any = {
+      headers: new HttpHeaders({
+        Accept: 'text/html, application/xhtml+xml, */*',
+        'Content-Type': `application/json`
+      }).set('Authorization', `Bearer ${token}`)
+    };
+    let request$ =  this.httpClient.post(`${this.TRANSACTION_URL}${url}`, data, options);
 
     return await lastValueFrom(request$);
   }
