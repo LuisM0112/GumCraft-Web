@@ -9,14 +9,11 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./confirm-purchase.component.css']
 })
 export class ConfirmPurchaseComponent implements OnInit {
-buyProduct(arg0: any) {
-throw new Error('Method not implemented.');
-}
+
   errorMessage: string = '';
   message: string = '';
-product: any;
 
-  constructor(private cartService: CartService){}
+  constructor(public cartService: CartService){}
   async ngOnInit(): Promise<void> {
     this.errorMessage = '';
     this.message = '';
@@ -25,23 +22,24 @@ product: any;
 
 cartList: ProductCart[] = [];
 
-public async getCart(){
-  try {
+  public async getCart(){
+    try {
 
-    this.cartList = await this.cartService.getCartByUserId();
-    if (this.cartList == null || !(this.cartList.length > 0)) {
-      this.displayMessage('El carrito está vacío');
+      this.cartList = await this.cartService.getCartByUserId();
+      if (this.cartList == null || !(this.cartList.length > 0)) {
+        this.displayMessage('El carrito está vacío');
+      }
+
+    } catch (error) {
+
+      const errorHttp = error as HttpErrorResponse;
+      const errorString = errorHttp.error? errorHttp.error : error as string;
+
+      this.displayError(errorString);
+      console.error('Error: ', error);
     }
-
-  } catch (error) {
-
-    const errorHttp = error as HttpErrorResponse;
-    const errorString = errorHttp.error? errorHttp.error : error as string;
-
-    this.displayError(errorString);
-    console.error('Error: ', error);
   }
-}
+
   displayMessage(arg0: string) {
     throw new Error('Method not implemented.');
   }

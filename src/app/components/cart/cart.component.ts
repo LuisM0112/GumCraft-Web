@@ -43,7 +43,6 @@ export class CartComponent implements OnInit {
   }
 
   public async addToCart(productId: number) {
-    console.log("hola");
     
     try {
       const response = await this.cartService.addProductToCart(productId);
