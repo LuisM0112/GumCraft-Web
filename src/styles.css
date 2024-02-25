@@ -60,3 +60,12 @@ button:hover{
   background-color: rgb(255, 221, 129);
   animation: shake 0.2s;
 }
+
+app-notification{
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -23,19 +23,13 @@ export class RegisterComponent {
   constructor(public userService: UserService, private router: Router) {}
 
   public async sendData() {
-    try {
-      const response = await this.userService.sendNewUser(this.userData);
-      console.log(response);
-      this.displayMessage(response);
-      if (response == 'Usuario registrado') {
-        setTimeout(() => {
-          this.router.navigate(['login']);
-        }, 1500);
-      }
-    } catch (error) {
-      const errorHttp = error as HttpErrorResponse;
-      this.displayError(errorHttp.error);
-      console.error('Error: ', error);
+    const response = await this.userService.sendNewUser(this.userData);
+    console.log(response);
+    this.displayMessage(response);
+    if (response == 'Usuario registrado') {
+      setTimeout(() => {
+        this.router.navigate(['login']);
+      }, 1500);
     }
   }
 
