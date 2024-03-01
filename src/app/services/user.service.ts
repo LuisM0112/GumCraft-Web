@@ -27,13 +27,18 @@ export class UserService {
       }),
       responseType: 'text',
     };
-    const request = this.httpClient.post<string>(
-      `${this.API_URL}/SignUp`,
-      formData,
-      options
-    );
-    const response: any = await lastValueFrom(request);
-    return response;
+
+    try {
+      const request = this.httpClient.post<string>(
+        `${this.API_URL}/SignUp`,
+        formData,
+        options
+      );
+      const response: any = await lastValueFrom(request);
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
   public async sendLoggedUser(userData: any): Promise<boolean> {
