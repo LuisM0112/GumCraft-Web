@@ -15,6 +15,7 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ConfirmPurchaseComponent } from './components/confirm-purchase/confirm-purchase.component';
+import { HealthComponent } from './health/health.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ConfirmPurchaseComponent } from './components/confirm-purchase/confirm-
     ProductComponent,
     CartComponent,
     ConfirmPurchaseComponent,
+    HealthComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
