@@ -6,11 +6,19 @@ img{
   height: 30%;
 }
 table{
-  border: 2px solid black;
+  border: 2px solid rgb(120, 0, 96);
   border-radius: 12px;
   margin-left: auto;
   margin-right: auto;
+  background-color: rgb(255, 197, 207);
 }
+.chicle{
+  width: 15%;
+  height: 15%;
+  margin-left: 40%;
+}
+
+
 .right{
   text-align: right;
 }
@@ -20,4 +28,13 @@ table{
 
 p{
   text-align: center;
+}
+.informacion-nutricional{
+  display: flex;
+}
+.sinRelleno{
+  flex: 1;
+}
+.conRelleno{
+  flex: 1;
 }
