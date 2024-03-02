@@ -9,20 +9,18 @@
     <h1 id="LogoName">GumCraft</h1>
     <h1 *ngIf="isAdmin">ADMIN</h1>
   </div>
-<<<<<<< Updated upstream
-  <button id="CartBtn" class="button" [routerLink]="'/cart'">Cart</button>
-  <button id="LoginBtn" class="button" [routerLink]="'/login'">Login</button>
-  <button id="RegisterBtn" class="button" [routerLink]="'/register'">
-    Register
-=======
   <button
     *ngIf="isAdmin"
     id="AdminButton"
-    class="buttonEnder"
+    class="buttonAdmin"
     [routerLink]="'/admin'"
   >
-    <img class="enderChest" src="assets/images/enderFoto.png" alt="" /></button
-  ><br />
+    <img
+      class="enderChest"
+      src="assets/images/enderFoto.png"
+      alt=""
+    /><br />Admin
+  </button>
   <button id="CartBtn" class="buttonEnder" [routerLink]="'/cart'">
     <img
       class="enderChest"
@@ -39,6 +37,5 @@
       src="assets/images/register.webp"
       alt=""
     /><br />Register
->>>>>>> Stashed changes
   </button>
 </div>
