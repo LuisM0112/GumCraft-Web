@@ -30,3 +30,53 @@
   filter: saturate(1.5);
   animation: shake 0.2s;
 }
+
+#Sanidad{
+  width: 8vmin;
+  height: min-content;
+  cursor: pointer;
+}
+
+.enderChest{
+  width: 70%;
+  height: 30%;
+}
+.loginImg{
+  width: 70%;
+  height: 30%;
+}
+.buttonEnder{
+  width: 10%;
+  background-color: white;
+}
+.buttonLogin{
+  width: 10%;
+  background-color: white;
+}
+.buttonRegister{
+  width: 10%;
+  background-color: white;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+  background-color: rgba(40, 128, 41, 0.637);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
