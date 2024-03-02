@@ -7,6 +7,11 @@ import { UserComponent } from './components/user/user.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
+<<<<<<< Updated upstream
+=======
+import { ConfirmPurchaseComponent } from './components/confirm-purchase/confirm-purchase.component';
+import { AdminComponent } from './components/admin/admin.component';
+>>>>>>> Stashed changes
 
 const routes: Routes = [
   {
@@ -37,6 +42,17 @@ const routes: Routes = [
     path: 'cart',
     component: CartComponent,
   },
+<<<<<<< Updated upstream
+=======
+  {
+    path: 'confirmPurchase',
+    component: ConfirmPurchaseComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+  },
+>>>>>>> Stashed changes
 ];
 
 @NgModule({
