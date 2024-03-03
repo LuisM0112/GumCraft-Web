@@ -5,6 +5,7 @@ img{
   width: 30%;
   height: 30%;
 }
+
 table{
   border: 2px solid rgb(120, 0, 96);
   border-radius: 12px;
@@ -12,29 +13,50 @@ table{
   margin-right: auto;
   background-color: rgb(255, 197, 207);
 }
+.backgroundChicle{
+  background-color: rgb(255, 123, 229);
+  color: white;
+  margin-left: 40%;
+  margin-right: 40%;
+  border-radius: 12px;
+}
 .chicle{
   width: 15%;
-  height: 15%;
+  height: 18%;
   margin-left: 40%;
 }
-
-
 .right{
   text-align: right;
 }
 .center{
   text-align: center;
 }
-
 p{
   text-align: center;
 }
 .informacion-nutricional{
   display: flex;
 }
+
+
+
 .sinRelleno{
   flex: 1;
 }
 .conRelleno{
-  flex: 1;
+  flex:1;
+}
+.libro{
+  width: 8vmin;
+  height: min-content;
+  cursor: pointer;
+  
+}
+button{
+  background-color: white;
+  margin-left: 45%;
+}
+.ingredientesP{
+  background-color: rgba(177, 81, 81, 0.827);
+  border-radius: 12px;
 }
