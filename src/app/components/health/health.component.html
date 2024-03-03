@@ -1,0 +1,85 @@
+<div class="main-container">
+    <p>Para Gumcraft, lo más importante son nuestros <b>clientes</b>, y por tanto su seguridad, por lo que contamos 
+      con el sello de seguridad AESAN (Agencia Española de Seguridad Alimentaria y Nutrición). Y posteriormente se muestran las 
+      informaciones nutricionales</p>
+    <img src="../../assets/images/selloSanidad.png" alt="Sello Sanidad">
+  </div>
+  <div class="informacion-nutricional">
+    <div class="sinRelleno">
+      <img class="chicle" src="../../assets/images/chicle.png" alt="">
+      <p class="backgroundChicle">Chicles sin relleno</p>
+
+      <br>
+      <table>
+        <tr>
+          <td class="center" colspan="2">INFORMACIÓN NUTRICIONAL (100gr)</td>
+        </tr>
+        <tr>
+          <td>Energía</td>
+          <td class="right">674 kj / 161 kcal</td>
+        </tr>
+        <tr>
+          <td>Grasas</td>
+          <td class="right">0 gr</td>
+        </tr>
+        <tr>
+          <td>de las cuales Saturadas</td>
+          <td class="right">0 gr</td>
+        </tr>
+        <tr>
+          <td>Carbohidratos</td>
+          <td class="right">67 gr</td>
+        </tr>
+        <tr>
+          <td>de los cuales azúcares</td>
+          <td class="right">0 gr</td>
+        </tr>
+        <tr>
+          <td>de los cuales polialcoholes</td>
+          <td class="right">67 gr</td>
+        </tr>
+      </table>
+      <br>
+      <button (click)="cambiarEstado()"><img class="libro" src="../../assets/images/libroIngredientes.webp" alt="">  <br><p class="ingredientesP"> Ingredientes  </button>
+      <br>
+      <p *ngIf="mostrarIngredientes"><b>Ingredientes: </b> Base de goma, resinas naturales y sintéticas, edulcorantes, suavizantes, colorantes y aromatizantes naturales y artificiales</p>
+    </div>
+    <div class="conRelleno">
+      <img class="chicle" src="../../assets/images/chicleRelleno.png" alt="">
+      <p class="backgroundChicle">Chicle con relleno</p>
+      <br>
+      <table>
+        <tr>
+          <td class="center" colspan="2">INFORMACIÓN NUTRICIONAL (100gr)</td>
+        </tr>
+        <tr>
+          <td>Energía</td>
+          <td class="right">730 kj / 195 kcal</td>
+        </tr>
+        <tr>
+          <td>Grasas</td>
+          <td class="right">0 gr</td>
+        </tr>
+        <tr>
+          <td>de las cuales Saturadas</td>
+          <td class="right">0 gr</td>
+        </tr>
+        <tr>
+          <td>Carbohidratos</td>
+          <td class="right">80 gr</td>
+        </tr>
+        <tr>
+          <td>de los cuales azúcares</td>
+          <td class="right">0 gr</td>
+        </tr>
+        <tr>
+          <td>de los cuales polialcoholes</td>
+          <td class="right">80 gr</td>
+        </tr>
+      </table>
+      <br>
+      <button (click)="cambiarEstadoConRelleno()"><img class="libro" src="../../assets/images/libroIngredientes.webp" alt="libroIngredientes"> <br><p class="ingredientesP"> Ingredientes </p></button> 
+      <br>
+      <p *ngIf="mostrarIngredientesRelleno"><b>Ingredientes: </b> Base de goma, resinas naturales y sintéticas, edulcorantes, suavizantes, colorantes y aromatizantes naturales y artificiales, y crema para el relleno (segun el sabor del relleno)</p>
+    </div>
+</div>

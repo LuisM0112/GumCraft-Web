@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,9 @@ import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ConfirmPurchaseComponent } from './components/confirm-purchase/confirm-purchase.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { HealthComponent } from './components/health/health.component';
+
 
 @NgModule({
   declarations: [
@@ -30,8 +34,10 @@ import { ConfirmPurchaseComponent } from './components/confirm-purchase/confirm-
     CartComponent,
     AdminComponent,
     ConfirmPurchaseComponent,
+    HealthComponent,
+    SearchBarComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, CommonModule],
   providers: [],
   bootstrap: [AppComponent],
 })

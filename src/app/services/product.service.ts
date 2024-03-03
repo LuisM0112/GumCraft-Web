@@ -7,7 +7,8 @@ import { lastValueFrom, map } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-
+  
+  BASE_URL: string = 'https://localhost:7065/';
   API_URL: string = 'https://localhost:7065/api/Gumcraft';
 
   constructor(private httpClient: HttpClient) {}
@@ -30,7 +31,7 @@ export class ProductService {
       productId: item.productId, 
       name: item.name,
       description: item.description,
-      image: item.image,
+      image: `https://localhost:7065/${item.image}`,
       stock: item.stock,
       eurPrice: item.euRprice,
       ethPrice: item.etHprice

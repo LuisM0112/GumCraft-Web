@@ -9,7 +9,9 @@ import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ConfirmPurchaseComponent } from './components/confirm-purchase/confirm-purchase.component';
-import { HealthComponent } from './health/health.component';
+import { HealthComponent } from './components/health/health.component';
+
+
 const routes: Routes = [
   {
     path: '',
