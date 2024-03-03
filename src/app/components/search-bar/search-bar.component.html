@@ -1,0 +1,3 @@
+<input type="search" placeholder="Producto..." [(ngModel)]="inputText" (ngModelChange)="sendInputText()"/>
+<button id="AZfilter" (click)="changeFilterAZStatus(); sendAZFilter()">A-Z</button>
+<button id="Pricefilter" (click)="changeFilterPriceStatus(); sendPriceFilter()">2-5€</button>

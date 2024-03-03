@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/model/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -10,6 +10,10 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
+
+  filterText: string = '';
+  filterAZ: string = '';
+  filterPrice: string = '';
 
   errorMessage: string = '';
   message: string = '';
@@ -23,6 +27,35 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+  }
+
+  getProductsFiltered(): Product[] {
+    let result: Product[] = this.productList;
+
+    if (this.filterText) {
+      result = result.filter((product) => product.name.includes(this.filterText));
+    }
+
+    if (this.filterAZ) {
+      result = result.sort((a,b) => a.name.localeCompare(b.name));
+    }
+    if (this.filterPrice) {
+      result = result.sort((a,b) => a.eurPrice - b.eurPrice);
+    }
+
+    return result;
+  }
+
+  updateFilterText(event: any){
+    this.filterText = event.filter;
+  }
+
+  updateFilterAZ(event: any){
+    this.filterAZ = event.filter;
+  }
+
+  updateFilterPrice(event: any){
+    this.filterPrice = event.filter;
   }
 
   /**

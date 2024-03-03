@@ -1,8 +1,9 @@
 <h1>Catálogo de productos</h1>
+<app-search-bar (filterTextEvent)="updateFilterText($event)" (filterAZEvent)="updateFilterAZ($event)" (filterPriceEvent)="updateFilterPrice($event)"></app-search-bar>
 <p id="ErrorMessage" *ngIf="errorMessage">{{errorMessage}}</p>
 <p id="Message" *ngIf="message">{{message}}</p>
 <div id="CatalogContainer" class="container">
-  <details *ngFor="let product of productList" name="producto">
+  <details *ngFor="let product of getProductsFiltered()" name="producto">
     <summary>
       <img src="{{product.image}}" alt="{{product.name}} image">
       <p>

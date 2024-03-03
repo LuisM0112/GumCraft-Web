@@ -16,6 +16,7 @@ import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ConfirmPurchaseComponent } from './components/confirm-purchase/confirm-purchase.component';
 import { HealthComponent } from './health/health.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HealthComponent } from './health/health.component';
     CartComponent,
     ConfirmPurchaseComponent,
     HealthComponent,
+    SearchBarComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
