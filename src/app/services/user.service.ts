@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { Token } from '@angular/compiler';
+import { ChangeDetectorRef, Injectable } from '@angular/core';
+import { Subject, lastValueFrom, map } from 'rxjs';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +10,8 @@ import { lastValueFrom } from 'rxjs';
 export class UserService {
   API_URL: string = 'https://localhost:7065/api/Gumcraft';
   API_URLAuth: string = 'https://localhost:7065/api/Auth';
+  private adminStatusSubject = new Subject<boolean>();
+  adminStatus$ = this.adminStatusSubject.asObservable();
 
   isUserLogged: boolean = false;
 
@@ -63,9 +67,83 @@ export class UserService {
 
       this.isUserLogged = true;
       localStorage.setItem('Token', response);
+      this.imAdmin();
       return this.isUserLogged;
     } catch (error) {
+      this.imAdmin;
       this.isUserLogged = false;
+      throw error;
+    }
+  }
+
+  public async imAdmin(): Promise<boolean> {
+    const token = localStorage.getItem('Token');
+    const options: any = {
+      headers: new HttpHeaders({
+        Accept: 'text/html, application/xhtml+xml, */*',
+      }).set('Authorization', `Bearer ${token}`),
+    };
+    try {
+      const request = this.httpClient.get(`${this.API_URL}/imAdmin`, options);
+      const response: any = await lastValueFrom(request);
+      this.adminStatusSubject.next(response);
+      return response;
+    } catch (error) {
+      this.adminStatusSubject.next(false);
+      throw error;
+    }
+  }
+
+  public async getUser(): Promise<User[]> {
+    try {
+      const token = localStorage.getItem('Token');
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      const request = this.httpClient
+        .get(`${this.API_URL}/Users`, { headers })
+        .pipe(map((response: any) => response.map(this.mapToUser)));
+
+      return await lastValueFrom(request);
+    } catch (error) {
+      throw error;
+    }
+  }
+  private mapToUser(user: any): User {
+    return {
+      userId: user.userId,
+      role: user.role,
+      name: user.userName,
+    };
+  }
+
+  public async deleteUser(userId: number): Promise<string> {
+    try {
+      const token = localStorage.getItem('Token');
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      const request = await this.httpClient.delete(
+        `${this.API_URL}/deleteUser/${userId}`,
+        {
+          headers,
+        }
+      );
+      const response: any = await lastValueFrom(request);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  public async changeUserRole(userId: number): Promise<string> {
+    try {
+      const token = localStorage.getItem('Token');
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      const request = this.httpClient.put(
+        `${this.API_URL}/changeRole/${userId}`,
+        {},
+        { headers }
+      );
+      const response: any = await lastValueFrom(request);
+      return response;
+    } catch (error) {
       throw error;
     }
   }

@@ -1,0 +1,25 @@
+<p id="ErrorMessage" *ngIf="errorMessage">{{ errorMessage }}</p>
+<p id="Message" *ngIf="message">{{ message }}</p>
+<!--Table Users-->
+<table>
+  <tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Role</td>
+  </tr>
+  <tr *ngFor="let user of userList">
+    <td>{{ user.userId }}</td>
+    <td>{{ user.name }}</td>
+    <td>
+      {{ user.role }}
+    </td>
+
+    <td>
+      <button class="AddToCart" (click)="chageRole(user.userId)">Change</button>
+    </td>
+
+    <td>
+      <button class="AddToCart" (click)="delete(user.userId)">Delete</button>
+    </td>
+  </tr>
+</table>

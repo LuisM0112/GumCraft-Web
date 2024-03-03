@@ -24,18 +24,15 @@ export class CartComponent implements OnInit {
     this.getCart();
   }
 
-  public async getCart(){
+  public async getCart() {
     try {
-
       this.cartList = await this.cartService.getCartByUserId();
       if (this.cartList == null || !(this.cartList.length > 0)) {
         this.displayMessage('El carrito está vacío');
       }
-
     } catch (error) {
-
       const errorHttp = error as HttpErrorResponse;
-      const errorString = errorHttp.error? errorHttp.error : error as string;
+      const errorString = errorHttp.error ? errorHttp.error : (error as string);
 
       this.displayError(errorString);
       console.error('Error: ', error);
@@ -43,34 +40,30 @@ export class CartComponent implements OnInit {
   }
 
   public async addToCart(productId: number) {
-    
     try {
       const response = await this.cartService.addProductToCart(productId);
       console.log(response);
       this.displayMessage(response);
-      
     } catch (error) {
-      
       const errorHttp = error as HttpErrorResponse;
-      const errorString = errorHttp.error? errorHttp.error : error as string;
+      const errorString = errorHttp.error ? errorHttp.error : (error as string);
       this.displayError(errorString);
       console.error('Error: ', error);
     }
+    this.getCart();
   }
 
   public async removeProductFromCart(productId: number) {
     try {
-
       const response = await this.cartService.removeProductFromCart(productId);
       console.log(response);
       this.displayMessage(response);
-
     } catch (error) {
-
       const errorHttp = error as HttpErrorResponse;
       this.displayError(errorHttp.error);
       console.error('Error: ', error);
     }
+    this.getCart();
   }
 
   public displayError(errorMessage: string) {
