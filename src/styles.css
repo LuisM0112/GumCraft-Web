@@ -5,18 +5,21 @@
   box-sizing: border-box;
 }
 
+body{
+  background-color: orange;
+  background-size:contain;
+}
+
 button{
   border-radius: 10px;
   padding: 10px;
-
-  background-color: rgb(192, 192, 192);
-
+  background-color: orange;
   border: hidden;
   cursor: pointer;
 }
 
 button:hover{
-  background-color: lightgray;
+  background-color: mintcream;
   animation: shake 0.2s;
 }
 
@@ -47,13 +50,9 @@ button:hover{
 }
 
 .AddToCart{
-  border-radius: 10px;
-  padding: 10px;
-
-  border: outset 2px rgb(255, 255, 178);
-  background-color: rgb(255, 208, 79);
-
+  background-color:  orange;
   cursor: pointer;
+  width: fit-content;
 }
 
 .AddToCart:hover{

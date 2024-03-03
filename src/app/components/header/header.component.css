@@ -4,10 +4,14 @@
   user-select: none;
 }
 
+
 .container{
   display: flex;
   width: 100%;
   align-items: center;
+  color: white;
+  background-color:   black;
+  border-radius: 10px 10px 10px 10px;
 }
 
 .container > *:not(.container) {
@@ -35,25 +39,24 @@
   width: 8vmin;
   height: min-content;
   cursor: pointer;
+  border-radius: 10px;
 }
 
+.book{
+    width: 70%;
+      height: 30%;
+}
 .enderChest{
-  width: 70%;
+  width: 90%;
   height: 30%;
 }
 .loginImg{
   width: 70%;
   height: 30%;
 }
-.buttonEnder{
-  width: 10%;
-  background-color: white;
-}
-.buttonLogin{
-  width: 10%;
-  background-color: white;
-}
-.buttonRegister{
+
+
+.buttonEnder, .buttonLogin, .buttonRegister, .buttonAdmin{
   width: 10%;
   background-color: white;
 }

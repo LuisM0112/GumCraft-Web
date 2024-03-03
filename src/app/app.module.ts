@@ -14,6 +14,8 @@ import { UserComponent } from './components/user/user.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { ConfirmPurchaseComponent } from './components/confirm-purchase/confirm-purchase.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { CartComponent } from './components/cart/cart.component';
     CatalogComponent,
     ProductComponent,
     CartComponent,
+    AdminComponent,
+    ConfirmPurchaseComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
