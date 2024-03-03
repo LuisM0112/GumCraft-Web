@@ -10,6 +10,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ConfirmPurchaseComponent } from './components/confirm-purchase/confirm-purchase.component';
 import { HealthComponent } from './components/health/health.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 
 const routes: Routes = [
@@ -52,7 +53,10 @@ const routes: Routes = [
   {
     path: 'health',
     component: HealthComponent,
-  },
+  },{
+    path: 'aboutUs',
+    component: AboutUsComponent,
+  }
 ];
 
 @NgModule({

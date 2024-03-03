@@ -19,6 +19,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ConfirmPurchaseComponent } from './components/confirm-purchase/confirm-purchase.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { HealthComponent } from './components/health/health.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { HealthComponent } from './components/health/health.component';
     ConfirmPurchaseComponent,
     HealthComponent,
     SearchBarComponent,
+    AboutUsComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, CommonModule],
   providers: [],
