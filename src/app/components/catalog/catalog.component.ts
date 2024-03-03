@@ -38,10 +38,10 @@ export class CatalogComponent implements OnInit {
 
     if (this.filterAZ) {
       result = result.sort((a,b) => a.name.localeCompare(b.name));
-    }
+    } else result = this.productList;
     if (this.filterPrice) {
       result = result.sort((a,b) => a.eurPrice - b.eurPrice);
-    }
+    } else result = this.productList;
 
     return result;
   }
