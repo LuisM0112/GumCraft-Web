@@ -3,6 +3,7 @@ import { Token } from '@angular/compiler';
 import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { Subject, lastValueFrom, map } from 'rxjs';
 import { User } from '../model/user';
+import { Order } from '../model/order';
 
 @Injectable({
   providedIn: 'root',
@@ -151,5 +152,29 @@ export class UserService {
   public logOut(){
     this.isUserLogged = false;
     localStorage.removeItem('Token')
+  }
+
+  public async getOrders(){
+    try {
+      const token = localStorage.getItem('Token');
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      const request = this.httpClient.get(`${this.API_URL}/Orders`, { headers }).pipe(
+        map((response: any) => response.map(this.mapToOrder))
+      );
+  
+      return await lastValueFrom(request);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  private mapToOrder(item: any): Order {
+    return {
+      orderId: item.orderId, 
+      status: item.status,
+      date: item.date,
+      EURprice: item.euRprice,
+      ETHprice: item.etHtotal
+    };
   }
 }

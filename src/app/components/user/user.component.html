@@ -1,3 +1,5 @@
+<p id="ErrorMessage" *ngIf="errorMessage">{{errorMessage}}</p>
+<p id="Message" *ngIf="message">{{message}}</p>
 <h1>Bienvenido, {{ currentUser.userName }}</h1>
 <b>Nombre, {{ currentUser.userName }}</b>
 <button>cambiar</button><br />
@@ -7,3 +9,21 @@
 <button>cambiar</button><br />
 <b>Dirección, {{ currentUser.address }}</b>
 <button>cambiar</button>
+<div id="OrdersContainer" class="container">
+  <table *ngIf="orderList.length > 0">
+    <tr>
+      <th>Numero del pedido</th>
+      <th>Estado</th>
+      <th>Fecha</th>
+      <th>Precio (eur)</th>
+      <th>Precio (eth)</th>
+    </tr>
+    <tr *ngFor="let order of orderList">
+      <td class="number">{{ order.orderId }}</td>
+      <td>{{ order.status }}</td>
+      <td class="number">{{ order.date }}</td>
+      <td class="number">{{ order.EURprice }}€</td>
+      <td class="number">{{ order.ETHprice }}Ξ</td>
+    </tr>
+  </table>
+</div>

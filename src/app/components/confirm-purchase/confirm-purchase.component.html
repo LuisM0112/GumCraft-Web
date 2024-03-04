@@ -9,9 +9,9 @@
     </tr>
     <tr *ngFor="let cart of cartList">
       <td>{{ cart.name }}</td>
-      <td>{{ cart.productId }}</td>
-      <td>{{ cart.amount }} ud</td>
-      <td>{{ cart.price }}€</td>
+      <td class="number">{{ cart.productId }}</td>
+      <td class="number">{{ cart.amount }} ud</td>
+      <td class="number">{{ cart.price }}€</td>
     </tr>
   </table>
   </div>

@@ -1,6 +1,6 @@
 <p id="ErrorMessage" *ngIf="errorMessage">{{ errorMessage }}</p>
 <p id="Message" *ngIf="message">{{ message }}</p>
-<table>
+<table *ngIf="cartList.length > 0">
   <tr>
     <th>Nombre</th>
     <th>Id</th>
@@ -11,7 +11,7 @@
   </tr>
   <tr *ngFor="let cart of cartList">
     <td>{{ cart.name }}</td>
-    <td>&NonBreakingSpace;{{ cart.productId }}</td>
+    <td class="number">{{ cart.productId }}</td>
 
     <td>
       <button
@@ -24,7 +24,7 @@
       <button class="AddToCart" (click)="addToCart(cart.productId)">+</button>
     </td>
 
-    <td>{{ cart.price }}€</td>
+    <td class="number">{{ cart.price }}€</td>
   </tr>
 </table>
 <button [routerLink]="'/confirmPurchase'">Confirmar compra</button><br />

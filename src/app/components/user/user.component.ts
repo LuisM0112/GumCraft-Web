@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Order } from 'src/app/model/order';
 
 interface User {
   userName: string;
@@ -17,10 +18,44 @@ interface User {
 export class UserComponent implements OnInit {
   currentUser: User = { userName: '', email: '', password: '', address: '' };
 
-  constructor(
-    private userService: UserService,
-    private httpClient: HttpClient
-  ) {}
+  orderList: Order[] = [];
 
-  ngOnInit(): void {}
+  errorMessage: string = '';
+  message: string = '';
+
+  constructor(
+    private userService: UserService
+  ) {
+    this.message = '';
+    this.errorMessage = '';
+  }
+
+  ngOnInit(): void {
+    this.getOrders();
+  }
+
+  public async getOrders() {
+    try {
+      this.orderList = await this.userService.getOrders();
+      if (this.orderList == null || !(this.orderList.length > 0)) {
+        this.displayMessage('No hay pedidos');
+      }
+    } catch (error) {
+      const errorHttp = error as HttpErrorResponse;
+      const errorString = errorHttp.error ? errorHttp.error : (error as string);
+
+      this.displayError(errorString);
+      console.error('Error: ', error);
+    }
+  }
+
+  public displayError(errorMessage: string) {
+    this.message = '';
+    this.errorMessage = errorMessage;
+  }
+
+  public displayMessage(message: string) {
+    this.errorMessage = '';
+    this.message = message;
+  }
 }
