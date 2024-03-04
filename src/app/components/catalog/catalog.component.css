@@ -4,6 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1vmax;
+  justify-content: space-around;
 }
 
 details{
