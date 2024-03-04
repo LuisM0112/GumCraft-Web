@@ -13,7 +13,7 @@ export class UserService {
   private adminStatusSubject = new Subject<boolean>();
   adminStatus$ = this.adminStatusSubject.asObservable();
 
-  isUserLogged: boolean = false;
+  public isUserLogged: boolean = localStorage.getItem('Token') ? true : false;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -146,5 +146,34 @@ export class UserService {
     } catch (error) {
       throw error;
     }
+  }
+
+  public logOut() {
+    this.isUserLogged = false;
+    localStorage.removeItem('Token');
+  }
+
+  public async getOrders() {
+    try {
+      const token = localStorage.getItem('Token');
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      const request = this.httpClient
+        .get(`${this.API_URL}/Orders`, { headers })
+        .pipe(map((response: any) => response.map(this.mapToOrder)));
+
+      return await lastValueFrom(request);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  private mapToOrder(item: any): Order {
+    return {
+      orderId: item.orderId,
+      status: item.status,
+      date: item.date,
+      EURprice: item.euRprice,
+      ETHprice: item.etHtotal,
+    };
   }
 }

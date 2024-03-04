@@ -24,6 +24,7 @@ export class CartService {
       return await lastValueFrom(request);
     } catch (error) {
       throw error;
+
     }
   }
 
@@ -36,9 +37,25 @@ export class CartService {
     };
   }
 
-  /**
-   * addProductToCart
-   */
+  public async getTotal(): Promise<number> {
+    const token = localStorage.getItem('Token');
+    const options: any = {
+      headers: new HttpHeaders({
+        Accept: 'text/html, application/xhtml+xml, */*',
+      }).set('Authorization', `Bearer ${token}`),
+      responseType: 'text',
+    };
+    try {
+      const request = this.httpClient.get(
+        `${this.API_URL}/cart/total`,
+        options
+      );
+      const response: any = await lastValueFrom(request);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
   public async addProductToCart(productId: number): Promise<string> {
     const token = localStorage.getItem('Token');
     const options: any = {
@@ -95,39 +112,44 @@ export class CartService {
     console.log(transaction);
     
     const txHash = await this.makeTransaction(transaction);
-    const transactionSuccess = await this.post(`/check/${transaction.id}`, JSON.stringify(txHash));
+    const transactionSuccess = await this.post(
+      `/check/${transaction.id}`,
+      JSON.stringify(txHash)
+    );
 
     console.log('Transacción realizada: ' + transactionSuccess);
 
     const transactionMessage = transactionSuccess
       ? 'Transacción realizada con éxito :D'
-      :'Transacción fallida :(';
+      : 'Transacción fallida :(';
   }
 
-  private async getAccount() : Promise<string> {
+  private async getAccount(): Promise<string> {
     if (typeof window.ethereum == 'undefined') {
       throw new Error('MetaMask no está instalado');
     }
 
-    const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
+    const accounts = await window.ethereum.request({
+      method: 'eth_requestAccounts',
+    });
     const account = accounts[0];
 
     await window.ethereum.request({
       method: 'wallet_requestPermissions',
       params: [
         {
-          "eth_accounts": { account }
-        }
-      ]
+          eth_accounts: { account },
+        },
+      ],
     });
 
     return account;
   }
 
-  private async makeTransaction(transaction: Transaction) : Promise<string> {
-    console.log(typeof transaction)
-    console.log(transaction.from)
-    console.log(transaction['from'])
+  private async makeTransaction(transaction: Transaction): Promise<string> {
+    console.log(typeof transaction);
+    console.log(transaction.from);
+    console.log(transaction['from']);
     const txHash = await window.ethereum.request({
       method: 'eth_sendTransaction',
       params: [
@@ -136,23 +158,27 @@ export class CartService {
           to: transaction.to,
           value: transaction.value,
           gas: transaction.gas,
-          gasPrice: transaction.gasPrice
-        }
-      ]
+          gasPrice: transaction.gasPrice,
+        },
+      ],
     });
 
     return txHash;
   }
 
-  private async post(url: string, data: any) : Promise<any> {
+  private async post(url: string, data: any): Promise<any> {
     const token = localStorage.getItem('Token');
     const options: any = {
       headers: new HttpHeaders({
         Accept: 'text/html, application/xhtml+xml, */*',
-        'Content-Type': `application/json`
-      }).set('Authorization', `Bearer ${token}`)
+        'Content-Type': `application/json`,
+      }).set('Authorization', `Bearer ${token}`),
     };
-    let request$ =  this.httpClient.post(`${this.TRANSACTION_URL}${url}`, data, options);
+    let request$ = this.httpClient.post(
+      `${this.TRANSACTION_URL}${url}`,
+      data,
+      options
+    );
 
     return await lastValueFrom(request$);
   }
