@@ -1,60 +1,34 @@
 <div id="HeaderContainer" class="container">
   <div id="LogoContainer" class="container">
-    <img
-      id="LogoImg"
-      src="../../assets/images/Logo.png"
-      alt="GumCraft-Logo"
-      [routerLink]="'/'"
-    />
+    <img id="LogoImg" src="../../assets/images/Logo.png" alt="GumCraft-Logo" [routerLink]="'/'"/>
     <h1 id="LogoName">GumCraft</h1>
 
     <h1 *ngIf="isAdmin">ADMIN</h1>
 
     <p>&nbsp;</p>
     <div class="tooltip">
-      <img
-        id="Sanidad"
-        src="../../assets/images/sanidad.png"
-        alt="Sanidad-Logo"
-        [routerLink]="'/health'"
-      />
+      <img id="Sanidad" src="../../assets/images/sanidad.png" alt="Sanidad-Logo" [routerLink]="'/health'"/>
 
       <span class="tooltiptext">Sanidad</span>
     </div>
     <div class="tooltip">
-      <img
-        id="Sanidad"
-        src="../../assets/images/aboutUs.png"
-        alt="Sanidad-Logo"
-        [routerLink]="'/aboutUs'"
-      />
+      <img id="Sanidad" src="../../assets/images/aboutUs.png" alt="Sanidad-Logo" [routerLink]="'/aboutUs'"/>
       <span class="tooltiptext">Sobre Nosotros</span>
     </div>
   </div>
-  <button
-    *ngIf="isAdmin"
-    id="AdminButton"
-    class="buttonAdmin"
-    [routerLink]="'/admin'"
-  >
-    <img class="book" src="assets/images/book.webp" alt="" /><br />
-    Admin
+  <button *ngIf="isAdmin" id="AdminButton" class="buttonAdmin btn" [routerLink]="'/admin'">
+    <img class="book" src="assets/images/book.webp" alt="" /><br />Admin
   </button>
-  <button id="CartBtn" class="buttonEnder" [routerLink]="'/cart'">
-    <img
-      class="enderChest"
-      src="assets/images/enderFoto.png"
-      alt=""
-    /><br />Cart
+  <button id="CartBtn" class="buttonEnder btn" [routerLink]="'/cart'">
+    <img class="enderChest" src="assets/images/enderFoto.png" alt=""/><br />Cart
   </button>
-  <button id="LoginBtn" class="buttonLogin" [routerLink]="'/login'">
+  <button *ngIf="!this.userService.isUserLogged" id="LoginBtn" class="buttonLogin btn" [routerLink]="'/login'">
     <img class="loginImg" src="assets/images/login.webp" alt="" /><br />Login
   </button>
-  <button id="RegisterBtn" class="buttonRegister" [routerLink]="'/register'">
-    <img
-      class="loginImg"
-      src="assets/images/register.webp"
-      alt=""
-    /><br />Register
+  <button *ngIf="!this.userService.isUserLogged" id="RegisterBtn" class="buttonRegister btn" [routerLink]="'/register'">
+    <img class="loginImg" src="assets/images/register.webp" alt=""/><br />Register
+  </button>
+  <button *ngIf="this.userService.isUserLogged" id="LogOutBtn" class="buttonLogOut btn" (click)="this.userService.logOut()">
+    <img class="loginImg" src="assets/images/register.webp" alt=""/><br />LogOut
   </button>
 </div>

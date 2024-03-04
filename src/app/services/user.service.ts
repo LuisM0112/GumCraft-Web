@@ -13,7 +13,7 @@ export class UserService {
   private adminStatusSubject = new Subject<boolean>();
   adminStatus$ = this.adminStatusSubject.asObservable();
 
-  isUserLogged: boolean = false;
+  isUserLogged: boolean = localStorage.getItem('Token') ? true : false;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -146,5 +146,10 @@ export class UserService {
     } catch (error) {
       throw error;
     }
+  }
+
+  public logOut(){
+    this.isUserLogged = false;
+    localStorage.removeItem('Token')
   }
 }

@@ -23,7 +23,7 @@ export class CartService {
 
       return await lastValueFrom(request);
     } catch (error) {
-      throw error;
+      throw new Error('Carrito no encontrado');
     }
   }
 

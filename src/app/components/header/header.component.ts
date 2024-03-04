@@ -8,14 +8,16 @@ import { UserService } from '../../services/user.service';
 })
 export class HeaderComponent implements OnInit {
   isAdmin: boolean = false;
+  isLogged: boolean = false
 
   constructor(
-    private userService: UserService,
+    public userService: UserService,
     private actualizar: ChangeDetectorRef
   ) {}
 
   async ngOnInit() {
     this.isAdmin = await this.userService.imAdmin();
+    this.isLogged = this.userService.isUserLogged;
     this.userService.adminStatus$.subscribe((status: boolean) => {
       this.isAdmin = status;
     });

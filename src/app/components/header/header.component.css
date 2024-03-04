@@ -56,7 +56,7 @@
 }
 
 
-.buttonEnder, .buttonLogin, .buttonRegister, .buttonAdmin{
+.btn{
   width: 10%;
   background-color: white;
 }
