@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Token } from '@angular/compiler';
-import { ChangeDetectorRef, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Subject, lastValueFrom, map } from 'rxjs';
 import { User } from '../model/user';
 import { Order } from '../model/order';
