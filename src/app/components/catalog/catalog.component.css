@@ -20,13 +20,15 @@ summary{
   padding: 15px;
   font-size: large;
   text-align: center;
-  background-color: rgb(212, 249, 255);
+  background-color: rgb(214, 145, 124);
   cursor: pointer;
+  color: black;
 }
 
 details[open]{
-  background-color: rgb(212, 249, 255);
+  background-color: rgb(255, 255, 255);
   border-radius: 15px;
+  text-align: center;
 }
 
 details > summary {
@@ -39,4 +41,9 @@ details > summary {
 
 .ethPrice::after{
   content: 'Ξ';
+}
+
+.img{
+  height: 350px;
+  width: 350px;
 }

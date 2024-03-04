@@ -2,24 +2,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
 *{
   font-family: 'Lexend', sans-serif;
-  box-sizing: border-box;
+  box-sizing: border-box  ;
 }
 
 body{
-  background-color: orange;
+  background-color: rgb(255, 239, 224);
   background-size:contain;
 }
 
 button{
   border-radius: 10px;
   padding: 10px;
-  background-color: orange;
+  background-color:lightblue;
   border: hidden;
   cursor: pointer;
 }
+.botones{
+  padding-top: 3px;
+  padding-bottom: 3px;
 
+}
+.name{
+  background-color: white;
+  border-radius: 10px;
+}
 button:hover{
-  background-color: mintcream;
+  background-color:rgb(255, 221, 129);
   animation: shake 0.2s;
 }
 
@@ -50,7 +58,7 @@ button:hover{
 }
 
 .AddToCart{
-  background-color:  orange;
+  background-color:  lightblue;
   cursor: pointer;
   width: fit-content;
 }
@@ -58,4 +66,9 @@ button:hover{
 .AddToCart:hover{
   background-color: rgb(255, 221, 129);
   animation: shake 0.2s;
+}
+
+td{
+  border: 1px solid   rgb(255, 96, 96);
+  background-color:whitesmoke;
 }

@@ -1,17 +1,34 @@
 <h1>Catálogo de productos</h1>
-<app-search-bar (filterTextEvent)="updateFilterText($event)" (filterAZEvent)="updateFilterAZ($event)" (filterPriceEvent)="updateFilterPrice($event)"></app-search-bar>
-<p id="ErrorMessage" *ngIf="errorMessage">{{errorMessage}}</p>
-<p id="Message" *ngIf="message">{{message}}</p>
+<app-search-bar
+  (filterTextEvent)="updateFilterText($event)"
+  (filterAZEvent)="updateFilterAZ($event)"
+  (filterPriceEvent)="updateFilterPrice($event)"
+></app-search-bar>
+<p id="ErrorMessage" *ngIf="errorMessage">{{ errorMessage }}</p>
+<p id="Message" *ngIf="message">{{ message }}</p>
 <div id="CatalogContainer" class="container">
   <details *ngFor="let product of getProductsFiltered()" name="producto">
     <summary>
-      <img src="{{product.image}}" alt="{{product.name}} image">
-      <p>
-        {{product.name}} 
-        <span class="eurPrice">{{product.eurPrice}}</span>
-      </p>
+      <img
+        src="{{ product.image }}"
+        alt="{{ product.name }} image"
+        class="img"
+      />
+      <div class="name">
+        <p>
+          {{ product.name }}
+          <span class="eurPrice">{{ product.eurPrice }}</span>
+        </p>
+      </div>
     </summary>
-    <button [routerLink]="'/product/' + product.productId">Ver detalles</button>
-    <button class="AddToCart" (click)="addToCart(product.productId)">Añadir al carrito</button>
+    <div class="botones">
+      <button [routerLink]="'/product/' + product.productId">
+        Ver detalles
+      </button>
+      <br /><br />
+      <button class="AddToCart" (click)="addToCart(product.productId)">
+        Añadir al carrito
+      </button>
+    </div>
   </details>
 </div>

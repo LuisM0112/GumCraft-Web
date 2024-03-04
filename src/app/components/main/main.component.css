@@ -2,7 +2,9 @@
 .content {
     padding-top: 2%;
     padding-bottom: 2%;
-    background-color: black;
+    background-color: rgb(214,
+        145,
+        124);
     text-align: center;
     align-items: center;
     color: white;
@@ -30,9 +32,9 @@
 }
 
 .marco{
-    background-color: orange;
-    border-top: 10px orange solid;
-    border-left: 10px orange solid;
-    border-bottom: 10px orange solid;
+    background-color: rgb(255, 239, 224);
+    border-top: 10px rgb(255, 239, 224) solid;
+    border-left: 10px rgb(255, 239, 224) solid;
+    border-bottom: 10px rgb(255, 239, 224) solid;
     border-radius: 10px 0px 0px 10px;
 }

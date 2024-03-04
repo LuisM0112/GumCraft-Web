@@ -4,22 +4,26 @@
   <tr>
     <th>Nombre</th>
     <th>Id</th>
-    <th>Eliminar</th>
+
     <th>Cantidad</th>
-    <th>Añadir</th>
+
     <th>Precio</th>
   </tr>
   <tr *ngFor="let cart of cartList">
     <td>{{ cart.name }}</td>
     <td>&NonBreakingSpace;{{ cart.productId }}</td>
-    <button
-      class="removeProduct"
-      (click)="removeProductFromCart(cart.productId)"
-    >
-      -
-    </button>
-    <td>{{ cart.amount }} ud</td>
-    <button class="AddToCart" (click)="addToCart(cart.productId)">+</button>
+
+    <td>
+      <button
+        class="removeProduct"
+        (click)="removeProductFromCart(cart.productId)"
+      >
+        -
+      </button>
+      {{ cart.amount }} ud
+      <button class="AddToCart" (click)="addToCart(cart.productId)">+</button>
+    </td>
+
     <td>{{ cart.price }}€</td>
   </tr>
 </table>

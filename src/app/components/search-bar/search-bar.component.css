@@ -1,11 +1,19 @@
+.buscador{
+align-content: space-between;
+}
 input{
-  border: hidden;
+
+
+  border: 10px solid rgb(255, 239, 224);
   width: 30%;
   height: 10px;
   padding: 1%;
-  background: #dddddd;
-  border-radius: 15px;
+  background: rgb(214,
+    145,
+    124);
+  border-radius: 30px;
   font-size: 100%;
+  color: white;
 }
 input[type="search"]::-webkit-search-cancel-button {
   height: 10px;
@@ -16,4 +24,5 @@ input:focus{
 }
 input::placeholder{
   user-select: none;
+  color:white
 }
