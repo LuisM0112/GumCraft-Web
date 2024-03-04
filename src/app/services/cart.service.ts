@@ -92,8 +92,6 @@ export class CartService {
     const account = await this.getAccount();
     let transaction = await this.post(`/Buy`, JSON.stringify(account)) as Transaction;
 
-    console.log(transaction);
-    
     const txHash = await this.makeTransaction(transaction);
     const transactionSuccess = await this.post(`/check/${transaction.id}`, JSON.stringify(txHash));
 
@@ -125,9 +123,6 @@ export class CartService {
   }
 
   private async makeTransaction(transaction: Transaction) : Promise<string> {
-    console.log(typeof transaction)
-    console.log(transaction.from)
-    console.log(transaction['from'])
     const txHash = await window.ethereum.request({
       method: 'eth_sendTransaction',
       params: [

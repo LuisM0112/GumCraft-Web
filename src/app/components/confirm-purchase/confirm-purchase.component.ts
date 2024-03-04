@@ -20,7 +20,7 @@ export class ConfirmPurchaseComponent implements OnInit {
     this.getCart();
   }
 
-cartList: ProductCart[] = [];
+  cartList: ProductCart[] = [];
 
   public async getCart(){
     try {
@@ -40,10 +40,13 @@ cartList: ProductCart[] = [];
     }
   }
 
-  displayMessage(arg0: string) {
-    throw new Error('Method not implemented.');
+  public displayError(errorMessage: string) {
+    this.message = '';
+    this.errorMessage = errorMessage;
   }
-  displayError(errorString: any) {
-    throw new Error('Method not implemented.');
+
+  public displayMessage(message: string) {
+    this.errorMessage = '';
+    this.message = message;
   }
 }

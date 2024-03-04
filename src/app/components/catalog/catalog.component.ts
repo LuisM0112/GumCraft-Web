@@ -61,12 +61,9 @@ export class CatalogComponent implements OnInit {
     console.log(this.productList);
   }
 
-  public async addToCart(productId: number) {
-    console.log("hola");
-    
+  public async addToCart(productId: number) {    
     try {
       const response = await this.cartService.addProductToCart(productId);
-      console.log(response);
       this.displayMessage(response);
       
     } catch (error) {
