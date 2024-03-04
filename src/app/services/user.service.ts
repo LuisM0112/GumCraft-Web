@@ -95,7 +95,20 @@ export class UserService {
     }
   }
 
-  public async getUser(): Promise<User[]> {
+  public async getUser(): Promise<User> {
+    try {
+      const token = localStorage.getItem('Token');
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      const request = this.httpClient
+        .get(`${this.API_URL}/GetUserById`, { headers })
+        .pipe(map((response: any) => this.mapToUser(response)));
+
+      return await lastValueFrom(request);
+    } catch (error) {
+      throw error;
+    }
+  }
+  public async getUserList(): Promise<User[]> {
     try {
       const token = localStorage.getItem('Token');
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -111,8 +124,10 @@ export class UserService {
   private mapToUser(user: any): User {
     return {
       userId: user.userId,
-      role: user.role,
       name: user.userName,
+      role: user.role,
+      email: user.email,
+      address: user.address
     };
   }
 

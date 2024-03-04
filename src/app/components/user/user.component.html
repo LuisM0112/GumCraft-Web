@@ -1,12 +1,11 @@
 <p id="ErrorMessage" *ngIf="errorMessage">{{errorMessage}}</p>
 <p id="Message" *ngIf="message">{{message}}</p>
-<h1>Bienvenido, {{ currentUser.userName }}</h1>
-<b>Nombre, {{ currentUser.userName }}</b>
+<h1>Bienvenido, {{ currentUser.name }}</h1>
+<b>Nombre, {{ currentUser.name }}</b>
 <button>cambiar</button><br />
 <b>Correo, {{ currentUser.email }}</b>
 <button>cambiar</button><br />
-<b>Contraseña, {{ currentUser.password }}</b>
-<button>cambiar</button><br />
+<b>Role, {{ currentUser.role }}</b><br>
 <b>Dirección, {{ currentUser.address }}</b>
 <button>cambiar</button>
 <div id="OrdersContainer" class="container">

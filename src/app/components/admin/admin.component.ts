@@ -26,7 +26,7 @@ export class AdminComponent implements OnInit {
 
   public async getUserList() {
     try {
-      this.userList = await this.userService.getUser();
+      this.userList = await this.userService.getUserList();
       if (this.userList == null) {
         this.displayMessage('no tienes permiso >:(');
       }

@@ -1,10 +1,10 @@
 <div id="ProductContainer">
   <h1>{{product.name}}</h1>
+  <img src="{{product.image}}" alt="{{product.image}} image">
   <p>Id: {{product.productId}}</p>
   <p>Descripción: {{product.description}}</p>
-  <p>Stock: {{product.stock}}</p>
-  <p>Precio: {{product.eurPrice}}</p>
-  <p>Precio: {{product.ethPrice}}</p>
+  <p>Stock: {{product.stock}}u</p>
+  <p>Precio: {{product.eurPrice}}€</p>
   <button class="AddToCart" (click)="addToCart(product.productId)">Añadir al carrito</button>
   <button [routerLink]="'/'">Volver</button>
 </div>

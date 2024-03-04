@@ -2,13 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Order } from 'src/app/model/order';
-
-interface User {
-  userName: string;
-  email: string;
-  password: string;
-  address: string;
-}
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-user',
@@ -16,7 +10,7 @@ interface User {
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  currentUser: User = { userName: '', email: '', password: '', address: '' };
+  currentUser: User = new User();
 
   orderList: Order[] = [];
 
@@ -31,7 +25,20 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUser();
     this.getOrders();
+  }
+
+  public async getUser() {
+    try {
+      this.currentUser = await this.userService.getUser();
+    } catch (error) {
+      const errorHttp = error as HttpErrorResponse;
+      const errorString = errorHttp.error ? errorHttp.error : (error as string);
+
+      this.displayError(errorString);
+      console.error('Error: ', error);
+    }
   }
 
   public async getOrders() {
