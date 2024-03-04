@@ -28,6 +28,9 @@
   <button *ngIf="!this.userService.isUserLogged" id="RegisterBtn" class="buttonRegister btn" [routerLink]="'/register'">
     <img class="loginImg" src="assets/images/register.webp" alt=""/><br />Register
   </button>
+  <button *ngIf="this.userService.isUserLogged" id="UserBtn" class="buttonUser btn" [routerLink]="'/user'">
+    <img class="loginImg" src="assets/images/user.png" alt=""/><br />User
+  </button>
   <button *ngIf="this.userService.isUserLogged" id="LogOutBtn" class="buttonLogOut btn" (click)="this.userService.logOut()">
     <img class="loginImg" src="assets/images/register.webp" alt=""/><br />LogOut
   </button>
