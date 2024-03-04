@@ -1,9 +1,25 @@
 <h1>Catálogo de productos</h1>
 <app-search-bar
   (filterTextEvent)="updateFilterText($event)"
-  (filterAZEvent)="updateFilterAZ($event)"
-  (filterPriceEvent)="updateFilterPrice($event)"
 ></app-search-bar>
+<button
+    [ngStyle]="{
+      backgroundColor: azFilterStatus ? 'lightblue' : 'rgb(255, 221, 129)'
+    }"
+    id="AZfilter"
+    (click)="changeFilterAZStatus();"
+  >
+    A-Z
+</button>
+<button
+  [ngStyle]="{
+    backgroundColor: priceFilterStatus ? 'lightblue' : 'rgb(255, 221, 129)'
+  }"
+  id="Pricefilter"
+  (click)="changeFilterPriceStatus()"
+>
+  2-5€
+</button>
 <p id="ErrorMessage" *ngIf="errorMessage">{{ errorMessage }}</p>
 <p id="Message" *ngIf="message">{{ message }}</p>
 <div id="CatalogContainer" class="container">

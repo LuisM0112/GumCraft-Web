@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/model/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -12,50 +12,45 @@ import { ProductService } from 'src/app/services/product.service';
 export class CatalogComponent implements OnInit {
 
   filterText: string = '';
-  filterAZ: string = '';
-  filterPrice: string = '';
 
   errorMessage: string = '';
   message: string = '';
 
   productList: Product[] = [];
 
+  azFilterStatus: boolean = false;
+  priceFilterStatus: boolean = false;
+
   constructor(
     public productService: ProductService,
-    public cartService: CartService
+    public cartService: CartService,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.getProducts();
   }
 
+  updateFilterText(event: any){
+    this.filterText = event.filter;
+  }
+
   getProductsFiltered(): Product[] {
-    let result: Product[] = this.productList;
+    let result: Product[] = this.productList.slice();;
 
     if (this.filterText) {
       result = result.filter((product) => product.name.includes(this.filterText));
     }
 
-    if (this.filterAZ) {
-      result = result.sort((a,b) => a.name.localeCompare(b.name));
-    } else result = this.productList;
-    if (this.filterPrice) {
-      result = result.sort((a,b) => a.eurPrice - b.eurPrice);
-    } else result = this.productList;
+    if (this.azFilterStatus) {
+      result.sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+    if (this.priceFilterStatus) {
+        result.sort((a, b) => a.eurPrice - b.eurPrice);
+    }
 
     return result;
-  }
-
-  updateFilterText(event: any){
-    this.filterText = event.filter;
-  }
-
-  updateFilterAZ(event: any){
-    this.filterAZ = event.filter;
-  }
-
-  updateFilterPrice(event: any){
-    this.filterPrice = event.filter;
   }
 
   /**
@@ -91,5 +86,18 @@ export class CatalogComponent implements OnInit {
   public displayMessage(message: string) {
     this.errorMessage = '';
     this.message = message;
+  }
+
+  changeFilterAZStatus(): void {
+    this.azFilterStatus = !this.azFilterStatus;
+    setTimeout(() => {
+      this.cdRef.detectChanges();
+    });
+  }
+  changeFilterPriceStatus(): void {
+    this.priceFilterStatus = !this.priceFilterStatus;
+    setTimeout(() => {
+      this.cdRef.detectChanges();
+    });
   }
 }

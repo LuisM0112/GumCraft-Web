@@ -5,22 +5,4 @@
     [(ngModel)]="inputText"
     (ngModelChange)="sendInputText()"
   />
-  <button
-    [ngStyle]="{
-      backgroundColor: azFilterStatus ? 'lightblue' : 'rgb(255, 221, 129)'
-    }"
-    id="AZfilter"
-    (click)="changeFilterAZStatus(); sendAZFilter()"
-  >
-    A-Z
-  </button>
-  <button
-    [ngStyle]="{
-      backgroundColor: priceFilterStatus ? 'lightblue' : 'rgb(255, 221, 129)'
-    }"
-    id="Pricefilter"
-    (click)="changeFilterPriceStatus(); sendPriceFilter()"
-  >
-    2-5€
-  </button>
 </div>
